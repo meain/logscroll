@@ -4,12 +4,11 @@ use std::io;
 use std::io::Write;
 use terminal_size::{terminal_size, Height, Width};
 
-fn cycle_lines(mut lines: Vec<String>, count: usize, newline: String) -> Vec<String> {
+fn cycle_lines(lines: &mut Vec<String>, count: usize, newline: String) {
     lines.push(newline);
     if lines.len() as usize > count {
         lines.drain(0..1);
     }
-    lines
 }
 
 fn print_logs(lines: &Vec<String>) {
@@ -88,7 +87,7 @@ fn main() {
                     // limit the line length to width of terminal
                     line = line.trim_end().chars().take(tw).collect();
                 }
-                lines = cycle_lines(lines.clone(), th, line.clone());
+                cycle_lines(&mut lines, th, line.clone());
                 print_logs(&lines);
                 line.clear();
                 has_next = true;
