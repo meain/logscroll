@@ -8,3 +8,12 @@
 </p>
 
 
+### Usage
+
+You can just pipe any log to `logscroll`. It also accepts two optional args `<height>` and `<width>`
+
+```
+log_generating_command | logscroll <height> <width>
+```
+
+
