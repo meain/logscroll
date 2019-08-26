@@ -20,7 +20,8 @@ pack() {
     mkdir "$tempdir/$package_name"
 
     # copying the main binary
-    cp "target/release/$PROJECT_NAME" "$tempdir/$package_name/"
+    ls target
+    cp "target/$TARGET/release/$PROJECT_NAME" "$tempdir/$package_name/"
     strip "$tempdir/$package_name/$PROJECT_NAME"
 
     # readme and license
@@ -66,7 +67,7 @@ make_deb() {
     tempdir=$(mktemp -d 2>/dev/null || mktemp -d -t tmp)
 
     # copy the main binary
-    install -Dm755 "target/release/$PROJECT_NAME" "$tempdir/usr/bin/$PROJECT_NAME"
+    install -Dm755 "target/$TARGET/release/$PROJECT_NAME" "$tempdir/usr/bin/$PROJECT_NAME"
     strip "$tempdir/usr/bin/$PROJECT_NAME"
 
     # readme and license
