@@ -9,7 +9,7 @@
 
 ### Installation
 
-You can install it using cargo:
+You could download the latest binary from the [`releases`](https://github.com/meain/logscroll/releases) page or install it using cargo:
 
 ```
 cargo install logscroll
