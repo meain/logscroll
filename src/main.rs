@@ -1,5 +1,7 @@
+use atty::Stream;
 use std::env;
 use std::io;
+use std::io::Write;
 use terminal_size::{terminal_size, Height, Width};
 
 fn cycle_lines(mut lines: Vec<String>, count: usize, newline: String) -> Vec<String> {
@@ -24,12 +26,33 @@ fn print_logs(lines: &Vec<String>) {
 
 fn main() {
     let stdin = io::stdin();
+    let mut writer = io::stdout();
 
     let mut has_next = true;
     let mut line = String::new();
 
     let mut tw = 5 as usize;
     let mut th = 5 as usize;
+
+    if !atty::is(Stream::Stdout) {
+        while has_next {
+            match stdin.read_line(&mut line) {
+                Ok(bytes) if bytes > 0 => {
+                    match write!(writer, "{}", line) {
+                        Ok(_) => (),
+                        Err(_) => (),
+                    };
+                    line.clear();
+                    has_next = true;
+                }
+                Ok(_) => {
+                    has_next = false;
+                }
+                Err(err) => return eprintln!("Error while reading stream. {}", err),
+            }
+        }
+        return;
+    }
 
     let args: Vec<String> = env::args().collect();
     if args.len() > 1 {
