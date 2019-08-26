@@ -1,6 +1,6 @@
 # Logscroll
 
-> Well, logs are useful. But limit it to a certain height.
+> Provide a limited window for logs
 
 
 <p align="center">
