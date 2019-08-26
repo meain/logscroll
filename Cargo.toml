@@ -1,0 +1,9 @@
+[package]
+name = "logscroll"
+version = "0.1.0"
+authors = ["Abin Simon <abinsimon10@gmail.com>"]
+edition = "2018"
+
+
+[dependencies]
+terminal_size = "0.1.8"
