@@ -66,7 +66,7 @@ make_deb() {
     tempdir=$(mktemp -d 2>/dev/null || mktemp -d -t tmp)
 
     # copy the main binary
-    install -Dm755 "target/$TARGET/release/$PROJECT_NAME" "$tempdir/usr/bin/$PROJECT_NAME"
+    install -Dm755 "target/release/$PROJECT_NAME" "$tempdir/usr/bin/$PROJECT_NAME"
     strip "$tempdir/usr/bin/$PROJECT_NAME"
 
     # readme and license

@@ -1,4 +1,4 @@
-# Logscroll
+# Logscroll [![Build Status](https://travis-ci.org/meain/logscroll.svg?branch=master)](https://travis-ci.org/meain/logscroll)
 
 > Provide a limited window for logs
 

@@ -25,6 +25,14 @@ matrix:
       env: TARGET=x86_64-unknown-linux-gnu
 
 
+
+addons:
+  apt:
+    packages:
+      # needed to build deb packages
+      - fakeroot
+
+
 env:
   global:
     # Default target on travis-ci.
@@ -40,6 +48,7 @@ install:
 script:
   # Incorporate TARGET env var to the build and test process
   - cargo build --target $TARGET --verbose
+  - ./loggenerator | cargo run > /dev/null  # testing when not using tty
   - ./loggenerator | cargo run
 
 before_deploy:
