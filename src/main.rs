@@ -78,7 +78,6 @@ fn main() {
     }
 
     let mut lines: Vec<String> = Vec::new();
-    // let mut lines: Vec<String> = vec!["".to_string();th];
 
     while has_next {
         match stdin.read_line(&mut line) {
