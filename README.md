@@ -7,6 +7,14 @@
   <img src="https://i.imgur.com/UxXH6cU.gif">
 </p>
 
+### Installation
+
+You can install it using cargo:
+
+```
+cargo install logscroll
+```
+
 
 ### Usage
 
