@@ -70,7 +70,6 @@ make_deb() {
 
     # readme and license
     install -Dm644 README.md "$tempdir/usr/share/doc/$PROJECT_NAME/README.md"
-    install -Dm644 LICENSE-MIT "$tempdir/usr/share/doc/$PROJECT_NAME/LICENSE-MIT"
     install -Dm644 LICENSE-APACHE "$tempdir/usr/share/doc/$PROJECT_NAME/LICENSE-APACHE"
 
     # Control file
