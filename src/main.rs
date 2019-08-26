@@ -31,7 +31,7 @@ fn main() {
     let mut has_next = true;
     let mut line = String::new();
 
-    let mut tw = 5 as usize;
+    let mut tw = 0 as usize;
     let mut th = 5 as usize;
 
     if !atty::is(Stream::Stdout) {
@@ -84,8 +84,11 @@ fn main() {
     while has_next {
         match stdin.read_line(&mut line) {
             Ok(bytes) if bytes > 0 => {
-                let sub: String = line.trim_end().chars().take(tw).collect();
-                lines = cycle_lines(lines.clone(), th, sub.clone());
+                if tw > 0 {
+                    // limit the line length to width of terminal
+                    line = line.trim_end().chars().take(tw).collect();
+                }
+                lines = cycle_lines(lines.clone(), th, line.clone());
                 print_logs(&lines);
                 line.clear();
                 has_next = true;
